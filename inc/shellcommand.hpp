@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 
+namespace shell
+{
+
 class ShellCommand
 {
   public:
@@ -27,3 +30,5 @@ class BashCommand : public ShellCommand
     const std::string shellType{"bash"};
     const std::string shellProg;
 };
+
+} // namespace shell

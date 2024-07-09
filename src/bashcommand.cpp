@@ -2,6 +2,9 @@
 
 #include <boost/process.hpp>
 
+namespace shell
+{
+
 using shellParams = std::vector<std::string>;
 
 BashCommand::BashCommand() :
@@ -28,3 +31,5 @@ int BashCommand::run(std::string&& cmd, std::vector<std::string>& output)
     }
     return retcode;
 }
+
+} // namespace shell

@@ -7,7 +7,7 @@ int main()
 {
     try
     {
-        auto cmdshandler = std::make_shared<BashCommand>();
+        auto cmdshandler = std::make_shared<shell::BashCommand>();
     }
     catch (std::exception& err)
     {
