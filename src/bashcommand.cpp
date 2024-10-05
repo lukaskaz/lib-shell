@@ -11,12 +11,12 @@ BashCommand::BashCommand() :
     shellProg{boost::process::search_path(shellType).string()}
 {}
 
-int BashCommand::run(std::string&& cmd)
+int BashCommand::run(const std::string& cmd)
 {
     return boost::process::system(shellProg, shellParams{"-c", cmd});
 }
 
-int BashCommand::run(std::string&& cmd, std::vector<std::string>& output)
+int BashCommand::run(const std::string& cmd, std::vector<std::string>& output)
 {
     boost::process::ipstream ips;
     auto retcode = boost::process::system(shellProg, shellParams{"-c", cmd},
