@@ -14,8 +14,8 @@ class ShellCommand
 
     ShellCommand(const ShellCommand&) = delete;
 
-    virtual int run(std::string&&) = 0;
-    virtual int run(std::string&&, std::vector<std::string>&) = 0;
+    virtual int run(const std::string&) = 0;
+    virtual int run(const std::string&, std::vector<std::string>&) = 0;
 };
 
 class BashCommand : public ShellCommand
@@ -23,8 +23,8 @@ class BashCommand : public ShellCommand
   public:
     BashCommand();
 
-    int run(std::string&&) override;
-    int run(std::string&&, std::vector<std::string>&) override;
+    int run(const std::string&) override;
+    int run(const std::string&, std::vector<std::string>&) override;
 
   private:
     const std::string shellType{"bash"};
