@@ -21,4 +21,7 @@ include_directories(inc)
 file(GLOB SOURCES "src/*.cpp")
 
 add_library(${PROJECT_NAME} ${SOURCES})
-target_link_libraries(${PROJECT_NAME} Boost::filesystem)
+IF(NOT Boost_FOUND)
+    add_dependencies(${PROJECT_NAME} libboost)
+ENDIF()
+target_link_libraries(${PROJECT_NAME} boost_filesystem)
