@@ -54,18 +54,19 @@ jobs:
   tests-coverage:
     name: Coverage
     needs: [test]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: test
 
     steps:
     - name: Checking out
       uses: actions/checkout@v4
-    - name: Setting up dependencies
+    - name: Setting up
       run: |
         sudo apt install lcov
+        cd tests && git clone https://github.com/lukaskaz/coverage-checker.git
     - name: Preparing tests
       run: |
         cd tests && mkdir build && cd build && cmake .. && make
     - name: Running coverage checker
       run: |
-        cd tests && ./scripts/check-coverage.sh
+        cd tests/coverage-checker && ./run.sh ../build
