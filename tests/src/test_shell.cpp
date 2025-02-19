@@ -1,19 +1,21 @@
 #include "mocks/mock_shell.hpp"
-#include "shellcommand.hpp"
+#include "shell/interfaces/bash/shell.hpp"
 
 using namespace testing;
 
 class TestShell : public Test
 {
   public:
-    std::shared_ptr<CommandsMock> commandMockPtr =
-        std::make_shared<NiceMock<CommandsMock>>();
-    std::shared_ptr<shell::ShellCommand> handler;
+    std::shared_ptr<ShellMock> commandMockPtr =
+        std::make_shared<NiceMock<ShellMock>>();
+    std::shared_ptr<shell::ShellIf> handler;
 
   protected:
     void SetUp() override
     {
-        handler = std::make_shared<shell::BashCommand>();
+        handler =
+            shell::Factory::create<shell::bash::Bash, shell::bash::config_t>(
+                {});
     }
 
     void TearDown() override

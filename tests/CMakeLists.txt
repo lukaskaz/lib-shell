@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-psabi")
 
-project(shellcmd-ut)
+project(shell-ut)
 enable_testing()
 
 include(cmake/flags.cmake)
@@ -17,7 +17,7 @@ if(COVERAGE)
 endif()
 
 include_directories(../inc)
-file(GLOB APP_SOURCES "../src/*.cpp")
+file(GLOB_RECURSE APP_SOURCES "../src/*.cpp")
 list(FILTER APP_SOURCES EXCLUDE REGEX "^.*/(main)\\.cpp$")
 
 include_directories(inc)
