@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-psabi")
 
-project(shellcmd)
+project(shell)
 
 include(cmake/flags.cmake)
 include(cmake/dependencies.cmake)
@@ -18,7 +18,7 @@ endif()
 add_subdirectory(examples)
 
 include_directories(inc)
-file(GLOB SOURCES "src/*.cpp")
+file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 add_library(${PROJECT_NAME} ${SOURCES})
 IF(NOT Boost_FOUND)
