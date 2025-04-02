@@ -34,7 +34,7 @@ jobs:
         mkdir build && cd build && cmake .. -DADD_EXAMPLES=ON && make
     - name: Executing program
       run: |
-        ./build/examples/linux/bash/prog
+        ./build/examples/linux/bash/lnxbaprog
 
   test:
     name: Test
